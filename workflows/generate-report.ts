@@ -1,6 +1,6 @@
 import { type FlueContext, type WorkflowRouteHandler } from '@flue/runtime';
 import * as v from 'valibot';
-import bizIntelAgent from '../agents/biz-intel.ts';
+import bizIntelAgent from '../agents/biz-intel';
 
 // Hono middleware to expose this workflow via HTTP
 export const route: WorkflowRouteHandler = async (_c, next) => next();
