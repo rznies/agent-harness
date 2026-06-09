@@ -6,7 +6,7 @@ const WHITESPACE_REGEX = /\s+/g;
 
 function cleanHtmlBefore(html) {
   return html
-    .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, '')
+    .replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -14,7 +14,7 @@ function cleanHtmlBefore(html) {
 
 function cleanHtmlAfter(html) {
   return html
-    .replace(SCRIPT_STYLE_REGEX, '')
+    .replace(SCRIPT_STYLE_REGEX, ' ')
     .replace(HTML_TAGS_REGEX, ' ')
     .replace(WHITESPACE_REGEX, ' ')
     .trim();
