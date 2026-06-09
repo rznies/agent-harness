@@ -1,13 +1,17 @@
 import { createAgent, defineTool, Type, configureProvider } from '@flue/runtime';
 
-// Helper to strip HTML tags for the webpage fetcher
+// Compiled regexes for better performance when stripping HTML
+const SCRIPT_STYLE_REGEX = /<(script|style)[^>]*>[\s\S]*?<\/\1>/gi;
+const HTML_TAGS_REGEX = /<[^>]+>/g;
+const WHITESPACE_REGEX = /\s+/g;
+
+// Helper to strip HTML tags for the webpage fetcher using pre-compiled regexes
 function cleanHtml(html: string): string {
-  // Strip script and style tags and their contents
-  let text = html.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, '');
-  // Strip other HTML tags
-  text = text.replace(/<[^>]+>/g, ' ');
-  // Normalize whitespace
-  return text.replace(/\s+/g, ' ').trim();
+  return html
+    .replace(SCRIPT_STYLE_REGEX, '')
+    .replace(HTML_TAGS_REGEX, ' ')
+    .replace(WHITESPACE_REGEX, ' ')
+    .trim();
 }
 
 // Define the agent factory
