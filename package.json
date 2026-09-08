@@ -13,10 +13,10 @@
   "dependencies": {
     "@flue/runtime": "^0.9.1",
     "agents": "^0.14.0",
-    "valibot": "^1.4.1"
+    "valibot": "^1.4.2"
   },
   "devDependencies": {
     "@flue/cli": "^0.9.1",
-    "wrangler": "^4.97.0"
+    "wrangler": "^4.129.1"
   }
 }
